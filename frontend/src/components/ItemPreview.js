@@ -20,9 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ItemPreview = (props) => {
   const item = props.item;
-  if (item.image === "") {
-    item.image = placeholder
-  }
   console.log(item.image)
   const handleClick = (ev) => {
     ev.preventDefault();
@@ -40,7 +37,7 @@ const ItemPreview = (props) => {
     >
       <img
         alt="item"
-        src={item.image}
+        src={item.image || placeholder}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
       />
