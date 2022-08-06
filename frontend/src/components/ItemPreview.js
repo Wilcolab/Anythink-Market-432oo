@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import agent from "../agent";
 import { connect } from "react-redux";
 import { ITEM_FAVORITED, ITEM_UNFAVORITED } from "../constants/actionTypes";
+import placeholder from "../imgs/placeholder.png";
 
 const mapDispatchToProps = (dispatch) => ({
   favorite: (slug) =>
@@ -19,7 +20,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ItemPreview = (props) => {
   const item = props.item;
-
+  if (item.image === "") {
+    item.image = placeholder
+  }
+  console.log(item.image)
   const handleClick = (ev) => {
     ev.preventDefault();
     if (item.favorited) {
