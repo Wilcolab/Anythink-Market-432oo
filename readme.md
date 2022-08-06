@@ -10,4 +10,20 @@ When implementing a new feature or fixing a bug, please create a new pull reques
 
 ## First setup
 
-**[TODO 05/01/2018 @vanessa-cooper]:** _It's been a while since anyone ran a fresh copy of this repo. I think it's worth documenting the steps needed to install and run the repo on a new machine?_
+First install [Docker](https://docs.docker.com/get-docker/) and start your Docker application so it is running in the background. 
+
+Next, clone the repo and navigate into the root folder:
+
+```sh
+$ git clone your-link-from-github
+$ cd your-link-from-github
+```
+Next, run docker-compose to create your image file and container. 
+
+```sh
+$ docker-compose up
+```
+
+If all goes well and no errors come up, navigate to http://localhost:3000/api/ping and a fun message should appear. 
+
+You are all setup!
