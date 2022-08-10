@@ -36,7 +36,7 @@ router.param("comment", function(req, res, next, id) {
     .catch(next);
 });
 
-router.get("/:title?", auth.optional, function(req, res, next) {
+router.get("/", auth.optional, function(req, res, next) {
   var query = {};
   var limit = 100;
   var offset = 0;
@@ -51,6 +51,10 @@ router.get("/:title?", auth.optional, function(req, res, next) {
 
   if (typeof req.query.tag !== "undefined") {
     query.tagList = { $in: [req.query.tag] };
+  }
+
+  if (typeof req.query.title !== "undefined") {
+    query.title = { $in: [req.query.title] };
   }
 
   Promise.all([
@@ -70,8 +74,6 @@ router.get("/:title?", auth.optional, function(req, res, next) {
       } else if (req.query.favorited) {
         query._id = { $in: [] };
       }
-
-      query.title = "/" + req.params.title + "/"
 
       return Promise.all([
         Item.find(query)
